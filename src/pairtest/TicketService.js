@@ -136,10 +136,3 @@ export default class TicketService {
     }
   }
 }
-
-const ticketService = new TicketService(new TicketPaymentService(), new SeatReservationService());
-console.log(ticketService.purchaseTickets(1,
-  new TicketTypeRequest('ADULT', 10),
-  new TicketTypeRequest('CHILD', 5),
-  new TicketTypeRequest('INFANT', 5),
-));
