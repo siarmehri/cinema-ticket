@@ -92,7 +92,9 @@ Provide a working implementation of a `TicketService` that:
     new TicketTypeRequest('CHILD', 5),
     new TicketTypeRequest('INFANT', 5),
   ));
-
+  ```
+- Run
+  ```
   node src/pairtest/TicketService.js 
   ```
 - Running the tests
