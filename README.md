@@ -1,6 +1,6 @@
-Instructions:
+# Instructions:
 
-# Objective
+## Objective
 
 This is a coding exercise which will allow you to demonstrate how you code and your approach to a given problem.
 
@@ -10,7 +10,7 @@ You will be assessed on:
 
 - How you have ensured the following business rules are correctly met.
 
-# Business Rules
+## Business Rules
 
 - There are 3 types of tickets i.e. Infant, Child, and Adult.
 
@@ -73,3 +73,35 @@ Provide a working implementation of a `TicketService` that:
 - Calculates the correct no of seats to reserve and makes a seat reservation request to the `SeatReservationService`.
 
 - Rejects any invalid ticket purchase requests. It is up to you to identify what should be deemed as an invalid purchase request.”
+
+# How to run the project?
+
+- Clone the project:
+  ```
+  git clone https://github.com/siarmehri/cinema-ticket.git
+  ```
+- Install packages:
+  ```
+  cd cinema-ticket/
+  npm install
+  ```
+- Initiate as follows: in src/pairtest/TicketService.js
+  ```
+  const ticketService = new TicketService(
+    new TicketPaymentService(),
+    new SeatReservationService()
+  );
+  console.log(ticketService.purchaseTickets(1,
+    new TicketTypeRequest('ADULT', 10),
+    new TicketTypeRequest('CHILD', 5),
+    new TicketTypeRequest('INFANT', 5),
+  ));
+
+  node src/pairtest/TicketService.js 
+  ```
+- Run Test
+  ```
+  npm test
+  ```
+
+

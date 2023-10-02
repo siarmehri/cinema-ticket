@@ -46,7 +46,7 @@ export default class TicketService {
       this.#validatePurchaseSummary(purchaseSummary);
       this.ticketPaymentService.makePayment(accountId, purchaseSummary.total_amount);
       this.seatReservationService.reserveSeat(accountId, purchaseSummary.total_seats);
-      return {purchase_summary: purchaseSummary};
+      return { purchase_summary: purchaseSummary };
     } catch (error) {
       throw error;
     }
