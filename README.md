@@ -27,13 +27,9 @@ You will be assessed on:
 - Child and Infant tickets cannot be purchased without purchasing an Adult ticket.
 
 |   Ticket Type    |     Price   |
-
 | ---------------- | ----------- |
-
 |    INFANT        |    £0       |
-
 |    CHILD         |    £10      |
-
 |    ADULT         |    £20      |
 
 - There is an existing `TicketPaymentService` responsible for taking payments.
@@ -85,7 +81,7 @@ Provide a working implementation of a `TicketService` that:
   cd cinema-ticket/
   npm install
   ```
-- Initiate as follows: in src/pairtest/TicketService.js
+- Initiate in src/pairtest/TicketService.js
   ```
   const ticketService = new TicketService(
     new TicketPaymentService(),
@@ -99,7 +95,7 @@ Provide a working implementation of a `TicketService` that:
 
   node src/pairtest/TicketService.js 
   ```
-- Run Test
+- Running the tests
   ```
   npm test
   ```
