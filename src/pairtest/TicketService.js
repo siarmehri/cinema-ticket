@@ -5,17 +5,17 @@ import SeatReservationService from '../thirdparty/seatbooking/SeatReservationSer
 
 export default class TicketService {
   // [Business Rule# 2] The ticket prices are based on the type of ticket
-  TICKET_PRICES = {
+  #TICKET_PRICES = {
     INFANT: 0,
     CHILD: 10,
     ADULT: 20,
   };
 
   // [Business Rule# 5] Only a maximum of 20 tickets that can be purchased at a time.
-  MAX_TICKETS_PURCHASE_ALLOWED = 20;
+  #MAX_TICKETS_PURCHASE_ALLOWED = 20;
 
-  ticketPaymentService;
-  seatReservationService;
+  #ticketPaymentService;
+  #seatReservationService;
 
   constructor(ticketPaymentService, seatReservationService) {
     if (!ticketPaymentService instanceof TicketPaymentService) {
@@ -30,8 +30,8 @@ export default class TicketService {
       );
     }
 
-    this.ticketPaymentService = ticketPaymentService;
-    this.seatReservationService = seatReservationService;
+    this.#ticketPaymentService = ticketPaymentService;
+    this.#seatReservationService = seatReservationService;
   }
 
 
@@ -44,8 +44,8 @@ export default class TicketService {
       this.#isValidAccountId(accountId);
       const purchaseSummary = this.#getPurchaseSummary(ticketTypeRequests);
       this.#validatePurchaseSummary(purchaseSummary);
-      this.ticketPaymentService.makePayment(accountId, purchaseSummary.total_amount);
-      this.seatReservationService.reserveSeat(accountId, purchaseSummary.total_seats);
+      this.#ticketPaymentService.makePayment(accountId, purchaseSummary.total_amount);
+      this.#seatReservationService.reserveSeat(accountId, purchaseSummary.total_seats);
       return { purchase_summary: purchaseSummary };
     } catch (error) {
       throw error;
@@ -104,16 +104,16 @@ export default class TicketService {
       // total tickets equals to number of tickets in ticket type request
       purchaseSummary.total_tickets += noOfTickets;
       // total price equals to noOfTickets * ticket price for the specified ticket type request
-      purchaseSummary.total_amount += noOfTickets * this.TICKET_PRICES[ticketType];
+      purchaseSummary.total_amount += noOfTickets * this.#TICKET_PRICES[ticketType];
     }
     return purchaseSummary;
   }
 
   #validatePurchaseSummary = (purchaseSummary) => {
     // [Business Rule# 5] Only a maximum of 20 tickets that can be purchased at a time.
-    if (purchaseSummary.total_tickets > this.MAX_TICKETS_PURCHASE_ALLOWED) {
+    if (purchaseSummary.total_tickets > this.#MAX_TICKETS_PURCHASE_ALLOWED) {
       throw new InvalidPurchaseException(
-        `Sorry, only maximum of ${this.MAX_TICKETS_PURCHASE_ALLOWED} tickets can be purchased at a time`
+        `Sorry, only maximum of ${this.#MAX_TICKETS_PURCHASE_ALLOWED} tickets can be purchased at a time`
       );
     }
     // [Business Rule# 7] Child and Infant tickets cannot be purchased without purchasing an Adult ticket.
