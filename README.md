@@ -95,7 +95,7 @@ Provide a working implementation of a `TicketService` that:
   ```
 - Run
   ```
-  node src/pairtest/TicketService.js 
+  node src/pairtest/TicketService.js
   ```
 - Running the tests
   ```
